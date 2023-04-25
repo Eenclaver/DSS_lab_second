@@ -10,16 +10,82 @@ using System.Windows.Forms;
 
 namespace DSS_second
 {
-    public partial class Form1 : Form
+    public partial class StartForm : Form
     {
-        public Form1()
+        public StartForm()
         {
             InitializeComponent();
+            string welcomeState = System.IO.File.ReadAllText("Cache");
+            if (welcomeState == "Welcome")
+            {
+                MessageBox.Show("Напишите программу, удаляющую из массива все дублирующиеся элементы.", "Сошнев Андрей 415а, работа номер 2, вариант 7", MessageBoxButtons.OK);
+            }
+            else
+            {
+                if (welcomeState == "FileForm")
+                {
+                    System.IO.File.WriteAllText("Cache", "Welcome");
+                }
+                else
+                {
+                    cb_welcome.Checked = true;
+                }
+            }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void tb_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                System.Windows.Forms.TextBox tb = (System.Windows.Forms.TextBox)sender;
+                double num = Convert.ToDouble(tb.Text);
+                //Triangle.canSaveResult = false;//Так как меняем значение в текст боксе то результат сохранить нельзя
+            }
+            catch
+            {
+                MessageBox.Show("Пожалуйста, введите верные данные", "Ахтунг!Ошибка", MessageBoxButtons.OK);
+                System.Windows.Forms.TextBox tb = (System.Windows.Forms.TextBox)sender;
+                tb.Clear();
+            }
+        }
+
+        private void inputMask(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar <= 43 || e.KeyChar >= 58) && e.KeyChar != 8)
+                e.Handled = true;
+            if (e.KeyChar == 47) e.Handled = true;
+            if (e.KeyChar == 46) e.Handled = true;
+        }
+
+        private void cb_Welcome_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cb_welcome.Checked == true)
+            {
+                System.IO.File.WriteAllText("Cache", "noWelcome");
+            }
+            else
+            {
+                System.IO.File.WriteAllText("Cache", "Welcome");
+            }
+        }
+
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void bt_Create_Click(object sender, EventArgs e)
+        {
+            int columns =Convert.ToInt32(tb_columns.Text);
+            int lines =Convert.ToInt32(tb_lines.Text);
+            ListViewItem lvi = new ListViewItem("smth");
+            lvi.SubItems.Add("SubItem");
+            listView1.Items.Add(lvi);
         }
     }
 }
@@ -55,7 +121,7 @@ namespace firstLab
             string welcomeState= System.IO.File.ReadAllText("Cache");
             if (welcomeState == "Welcome")
             {
-                MessageBox.Show("Для заданной точки и треугольника на плоскости определить, принадлежит ли точка треугольнику.", "Сошнев Андрей 415а, работа номер 1, вариант 6", MessageBoxButtons.OK);
+                MessageBox.Show("Напишите программу, удаляющую из массива все дублирующиеся элементы.", "Сошнев Андрей 415а, работа номер 2, вариант 7", MessageBoxButtons.OK);
             }
             else
             {
