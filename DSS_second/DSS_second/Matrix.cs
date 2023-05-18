@@ -13,5 +13,6 @@ namespace DSS_second
         public static int columns=0;
         public static DataGridView dgw;
         public static bool canSave;
+        public static bool canSaveResult;
     }
 }
