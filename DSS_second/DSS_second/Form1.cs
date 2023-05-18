@@ -17,9 +17,12 @@ namespace DSS_second
             InitializeComponent();
             tb_lines.Text = Convert.ToString(Matrix.lines);
             tb_columns.Text = Convert.ToString(Matrix.columns);
+            dgw_Matrix.Columns.Add("", "");
+            dgw_Matrix.Rows.Add("", "");
             string welcomeState = System.IO.File.ReadAllText("Cache");
             if (welcomeState == "Welcome")
             {
+                cb_welcome.Checked = true;
                 MessageBox.Show("Напишите программу, удаляющую из массива все дублирующиеся элементы.", "Сошнев Андрей 415а, работа номер 2, вариант 7", MessageBoxButtons.OK);
             }
             else
@@ -27,12 +30,14 @@ namespace DSS_second
                 if (welcomeState == "FileForm")
                 {
                     System.IO.File.WriteAllText("Cache", "Welcome");
+                    dgw_Matrix = Matrix.dgw;
                 }
                 else
                 {
-                    cb_welcome.Checked = true;
+                    cb_welcome.Checked = false;
                 }
             }
+
         }
 
         private void tb_TextChanged(object sender, EventArgs e)
@@ -136,7 +141,7 @@ namespace DSS_second
         {
             try
             {
-                Matrix.dgw=dgw_Matrix;
+                Convert.ToInt32(dgw_Matrix[0,0].Value);
                 Matrix.canSave = true;
             }
             catch

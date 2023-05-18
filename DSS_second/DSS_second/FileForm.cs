@@ -46,9 +46,9 @@ namespace DSS_second
             try
             {
                 if (fileText.Length > 8) { double bonk = Convert.ToDouble("Bonk!"); }
-                for (int i = 0; i < fileText.Length; i++)
+                for (int i = 2; i < fileText.Length; i++)
                 {
-                    filedata = Convert.ToDouble(fileText[i]);
+                    filedata = Convert.ToInt32(fileText[i]);
                 }
                 Matrix.lines = Convert.ToInt32(fileText[0]);
                 Matrix.columns = Convert.ToInt32(fileText[1]);
