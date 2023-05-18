@@ -35,6 +35,7 @@ namespace DSS_second
 
         private void bt_upload_Click(object sender, EventArgs e)
         {
+            int fileElCounter=2;
             if (openFile.ShowDialog() == DialogResult.Cancel)
                 return;
             double filedata;
@@ -49,9 +50,16 @@ namespace DSS_second
                 {
                     filedata = Convert.ToDouble(fileText[i]);
                 }
-                /*Matrix.lines = Convert.ToDouble(fileText[0]);
-                Matrix.columns = Convert.ToDouble(fileText[1]);
-                Matrix.dgw = Convert.ToDouble(fileText[2]);*/
+                Matrix.lines = Convert.ToInt32(fileText[0]);
+                Matrix.columns = Convert.ToInt32(fileText[1]);
+                for (int i = 0; i < Matrix.lines; i++)
+                {
+                    for (int j = 0; j < Matrix.columns; j++)
+                    {
+                        Matrix.dgw[i,j].Value= Convert.ToInt32(fileText[fileElCounter]);
+                        fileElCounter++;
+                    }
+                }
                 FileForm.ActiveForm.Hide();
                 StartForm MyForm2 = new StartForm();
                 MyForm2.ShowDialog();
@@ -67,12 +75,21 @@ namespace DSS_second
 
         private void bt_save_Click(object sender, EventArgs e)
         {
+            int matrixElemCounter = 2;            
             if (saveFile.ShowDialog() == DialogResult.Cancel)
                 return;
             string[] filedata = new string[8];
             filedata[0] = Convert.ToString(Matrix.lines);
             filedata[1] = Convert.ToString(Matrix.columns);
-            filedata[2] = Convert.ToString(Matrix.dgw);
+            //filedata[2] = Convert.ToString(Matrix.dgw);
+            for(int i = 0; i < Matrix.lines;i++)
+            {
+                for(int j=0;j< Matrix.columns; j++)
+                {
+                    filedata[matrixElemCounter] = Convert.ToString(Matrix.dgw[i,j].Value);
+                    matrixElemCounter++;
+                }
+            }
             // получаем выбранный файл
             string filename = saveFile.FileName;
             // сохраняем текст в файл
@@ -90,12 +107,20 @@ namespace DSS_second
 
         private void bt_result_Click(object sender, EventArgs e)
         {
+            int matrixElemCounter = 2;
             if (saveFile.ShowDialog() == DialogResult.Cancel)
                 return;
             string[] filedata = new string[9];
-            filedata[0] = "Кордината X точки:" + Convert.ToString(Matrix.lines);
-            filedata[1] = "Кордината Y точки:" + Convert.ToString(Matrix.columns);
-            filedata[2] = "Кордината X первой точки треугольника:" + Convert.ToString(Matrix.dgw);
+            filedata[0] = "Количество строк матрицы:" + Convert.ToString(Matrix.lines);
+            filedata[1] = "Количество столбцов матрицы:" + Convert.ToString(Matrix.columns);
+            for (int i = 0; i < Matrix.lines; i++)
+            {
+                for (int j = 0; j < Matrix.columns; j++)
+                {
+                    filedata[matrixElemCounter] ="Элементматрицы под номером"+ matrixElemCounter +" : "+Convert.ToString(Matrix.dgw[i, j].Value);
+                    matrixElemCounter++;
+                }
+            }
             // получаем выбранный файл
             string filename = saveFile.FileName;
             // сохраняем текст в файл

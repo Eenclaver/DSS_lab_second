@@ -42,7 +42,7 @@ namespace DSS_second
                 System.Windows.Forms.TextBox tb = (System.Windows.Forms.TextBox)sender;
                 if (tb.Text.Length > 0) { double num = Convert.ToDouble(tb.Text); }
 
-                //Triangle.canSaveResult = false;//Так как меняем значение в текст боксе то результат сохранить нельзя
+                Matrix.canSaveResult = false;//Так как меняем значение в текст боксе то результат сохранить нельзя
             }
             catch
             {
@@ -84,6 +84,7 @@ namespace DSS_second
 
         private void bt_Create_Click(object sender, EventArgs e)
         {
+            Matrix.canSaveResult = false;
             Matrix.columns =Convert.ToInt32(tb_columns.Text);
             Matrix.lines=Convert.ToInt32(tb_lines.Text);
             dgw_Matrix.Columns.Clear();
@@ -99,6 +100,7 @@ namespace DSS_second
 
         private void bt_del_Click(object sender, EventArgs e)
         {
+            Matrix.canSaveResult = true;
             List<string> oneElements = new List<string>();
             oneElements.Add(Convert.ToString(dgw_Matrix[0, 0].Value));
             for(int i = 0; i < Matrix.lines; i++)
@@ -127,6 +129,7 @@ namespace DSS_second
                     count++;
                 }
             }
+            Matrix.resDgw = dgw_Matrix;
         }
 
         private void bt_fileWork_Click(object sender, EventArgs e)
