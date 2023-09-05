@@ -88,7 +88,7 @@
             this.dgw_Matrix.AllowUserToOrderColumns = true;
             this.dgw_Matrix.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgw_Matrix.Location = new System.Drawing.Point(385, 15);
-            this.dgw_Matrix.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgw_Matrix.Margin = new System.Windows.Forms.Padding(4);
             this.dgw_Matrix.Name = "dgw_Matrix";
             this.dgw_Matrix.RowHeadersWidth = 51;
             this.dgw_Matrix.Size = new System.Drawing.Size(353, 227);
@@ -99,7 +99,7 @@
             this.bt_del.Location = new System.Drawing.Point(12, 153);
             this.bt_del.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_del.Name = "bt_del";
-            this.bt_del.Size = new System.Drawing.Size(166, 89);
+            this.bt_del.Size = new System.Drawing.Size(168, 89);
             this.bt_del.TabIndex = 6;
             this.bt_del.Text = "Удалить все повторяющиеся элементы";
             this.bt_del.UseVisualStyleBackColor = true;
@@ -107,10 +107,10 @@
             // 
             // bt_fileWork
             // 
-            this.bt_fileWork.Location = new System.Drawing.Point(212, 153);
+            this.bt_fileWork.Location = new System.Drawing.Point(206, 153);
             this.bt_fileWork.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_fileWork.Name = "bt_fileWork";
-            this.bt_fileWork.Size = new System.Drawing.Size(166, 89);
+            this.bt_fileWork.Size = new System.Drawing.Size(172, 89);
             this.bt_fileWork.TabIndex = 7;
             this.bt_fileWork.Text = "Сохранить/Загрузить данные";
             this.bt_fileWork.UseVisualStyleBackColor = true;
@@ -132,6 +132,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "StartForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgw_Matrix)).EndInit();
             this.ResumeLayout(false);

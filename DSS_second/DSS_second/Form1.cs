@@ -20,6 +20,7 @@ namespace DSS_second
             dgw_Matrix.Columns.Add("", "");
             dgw_Matrix.Rows.Add("", "");
             string welcomeState = System.IO.File.ReadAllText("Cache");
+            Matrix.cacheState = welcomeState;
             if (welcomeState == "Welcome")
             {
                 cb_welcome.Checked = true;
@@ -29,7 +30,7 @@ namespace DSS_second
             {
                 if (welcomeState == "FileForm")
                 {
-                    System.IO.File.WriteAllText("Cache", "Welcome");
+                    System.IO.File.WriteAllText("Cache", Matrix.cacheState);
                     dgw_Matrix = Matrix.dgw;
                 }
                 else
@@ -69,11 +70,13 @@ namespace DSS_second
         {
             if (cb_welcome.Checked == true)
             {
-                System.IO.File.WriteAllText("Cache", "noWelcome");
+                System.IO.File.WriteAllText("Cache", "Welcome");
+                Matrix.cacheState = "Welcome";
             }
             else
             {
-                System.IO.File.WriteAllText("Cache", "Welcome");
+                System.IO.File.WriteAllText("Cache", "noWelcome");
+                Matrix.cacheState = "noWelcome";
             }
         }
 

@@ -104,6 +104,7 @@
             this.MinimizeBox = false;
             this.Name = "FileForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Работа с файлами";
             this.ResumeLayout(false);
 
